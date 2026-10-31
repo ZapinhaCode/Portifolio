@@ -61,3 +61,53 @@ const observer = new IntersectionObserver(entries => {
 }, { rootMargin: '-45% 0px -45% 0px' });
 
 sections.forEach(section => observer.observe(section));
+
+
+// ------------------------------------------------------------------
+// Automatic age and time-in-role
+// ------------------------------------------------------------------
+const DATES = {
+    birth: '2003-01-29',
+    support: { start: '2021-02', end: '2022-02' },
+    dev: { start: '2022', end: null }
+};
+
+function parseDate(value) {
+    if (!value) return null;
+    const [year, month = 1, day = 1] = value.split('-').map(Number);
+    return new Date(year, month - 1, day);
+}
+
+function plural(n, word) {
+    return n + ' ' + word + (n === 1 ? '' : 's');
+}
+
+function calcAge(birth) {
+    const today = new Date();
+    let age = today.getFullYear() - birth.getFullYear();
+    const hadBirthday = today.getMonth() > birth.getMonth() ||
+        (today.getMonth() === birth.getMonth() && today.getDate() >= birth.getDate());
+    return hadBirthday ? age : age - 1;
+}
+
+function formatDuration(start, end) {
+    const to = end || new Date();
+    let months = (to.getFullYear() - start.getFullYear()) * 12 + (to.getMonth() - start.getMonth());
+    if (months < 1) months = 1;
+    const years = Math.floor(months / 12);
+    const rest = months % 12;
+
+    if (years === 0) return plural(rest, 'month');
+    if (rest === 0) return plural(years, 'year');
+    return plural(years, 'year') + ', ' + plural(rest, 'month');
+}
+
+const birth = parseDate(DATES.birth);
+const ageEl = document.getElementById('age');
+if (birth && ageEl) ageEl.textContent = calcAge(birth);
+
+document.querySelectorAll('[data-role]').forEach(el => {
+    const range = DATES[el.dataset.role];
+    const start = range && parseDate(range.start);
+    if (start) el.textContent = formatDuration(start, parseDate(range.end));
+});
