@@ -202,61 +202,154 @@ span {
 }
 
 
-/* Services */
-.services {
+/* Section title (used by every section) */
+.section-title {
+    font-size: 6rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+}
+
+
+/* Projects */
+.projects {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 5rem;
+    gap: 4rem;
     background-color: var(--bg);
 }
 
-.section-title {
-    font-size: 5rem;
-    font-weight: 700;
+.project-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.filter-btn {
+    padding: 1rem 2.8rem;
+    background-color: black;
+    border: 2px solid var(--accent);
+    border-radius: 4rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--accent);
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background-color: var(--accent);
+    color: black;
+    box-shadow: 0 0 25px var(--accent);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(32rem, 1fr));
+    gap: 3rem;
+    width: 100%;
+    max-width: 120rem;
+}
+
+.projects-empty {
+    font-size: 2.5rem;
+    color: #d0d0d0;
     text-align: center;
 }
 
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
-    gap: 2.5rem;
-    width: 100%;
-}
-
-.service-card {
+.project-card {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    padding: 3.5rem 2.5rem;
+    overflow: hidden;
     background-color: var(--bg-soft);
     border: 2px solid transparent;
     border-radius: 2rem;
     transition: 0.3s ease;
 }
 
-.service-card:hover {
+.project-card[hidden] {
+    display: none;
+}
+
+.project-card:hover {
     border-color: var(--accent);
     transform: translateY(-8px);
     box-shadow: 0 0 25px var(--accent);
 }
 
-.service-card i {
-    font-size: 4.5rem;
+.project-thumb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 17rem;
+    background: linear-gradient(135deg, rgba(183, 75, 75, 0.35), #0d0d0d);
+}
+
+.project-thumb i {
+    font-size: 6rem;
     color: var(--accent);
 }
 
-.service-card h3 {
+.project-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 1.5rem;
+    padding: 2.5rem;
+}
+
+.project-status {
+    align-self: flex-start;
+    padding: 0.3rem 1.2rem;
+    border-radius: 2rem;
+    background-color: rgba(183, 75, 75, 0.15);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.project-status.live::before {
+    content: "";
+    display: inline-block;
+    width: 0.8rem;
+    height: 0.8rem;
+    margin-right: 0.7rem;
+    border-radius: 50%;
+    background-color: #4caf50;
+}
+
+.project-body h3 {
     font-size: 2.2rem;
     font-weight: 600;
 }
 
-.service-card p {
+.project-body p {
     font-size: 1.5rem;
     line-height: 1.7;
     color: #d0d0d0;
 }
+
+.project-body .tags {
+    margin-top: 0;
+}
+
+.project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: auto;
+    padding-top: 1rem;
+}
+
 
 /* Skills */
 .skills {
@@ -299,17 +392,20 @@ span {
 }
 
 /* Scroll reveal */
+.project-card.reveal,
 .skill-card.reveal {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.project-card.reveal.visible,
 .skill-card.reveal.visible {
     opacity: 1;
     transform: none;
 }
 
+.project-card.reveal.visible:hover,
 .skill-card.reveal.visible:hover {
     transform: translateY(-8px);
 }
@@ -451,6 +547,17 @@ span {
     margin-top: 1.5rem;
 }
 
+.certificate-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.certificate-links .experience-link {
+    margin-top: 0;
+}
+
 
 /* Experience */
 .experience {
@@ -582,6 +689,10 @@ span {
         animation: none;
     }
 
+    .tab-panel {
+        animation: none;
+    }
+
     html {
         scroll-behavior: auto;
     }
@@ -642,6 +753,10 @@ span {
         padding: 10rem 5% 5rem;
     }
 
+    .section-title {
+        font-size: 5rem;
+    }
+
     .home {
         flex-direction: column;
     }
@@ -661,12 +776,16 @@ span {
 }
 
 @media (max-width: 480px) {
+    .logo {
+        font-size: 1.9rem;
+    }
+
     .home-content h1 {
         font-size: 4rem;
     }
 
     .section-title {
-        font-size: 3.8rem;
+        font-size: 4rem;
     }
 
     .experience-card {
@@ -675,6 +794,10 @@ span {
 
     .experience-company h3 {
         font-size: 2.4rem;
+    }
+
+    .certificate-links {
+        justify-content: center;
     }
 
     .education-card {

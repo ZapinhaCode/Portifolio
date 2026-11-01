@@ -69,7 +69,7 @@ sections.forEach(section => observer.observe(section));
 const DATES = {
     birth: '2003-01-29',
     support: { start: '2021-02', end: '2022-02' },
-    dev: { start: '2022', end: null }
+    dev: { start: '2022-02', end: null }
 };
 
 function parseDate(value) {
@@ -132,7 +132,7 @@ function activateTab(button) {
 tabButtons.forEach((button, index) => {
     button.addEventListener('click', () => activateTab(button));
 
-    // Navegação por teclado (setas esquerda/direita)
+    // Keyboard navigation (left/right arrows)
     button.addEventListener('keydown', e => {
         if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
         const step = e.key === 'ArrowRight' ? 1 : -1;
@@ -142,10 +142,9 @@ tabButtons.forEach((button, index) => {
     });
 });
 
-// Reveal skill cards on scroll
+// Reveal skill and project cards on scroll
 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const skillCards = document.querySelectorAll('.skill-card');
-
+    const revealCards = document.querySelectorAll('.skill-card, .project-card');
     const revealObserver = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
             if (!entry.isIntersecting) return;
@@ -154,8 +153,34 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         });
     }, { threshold: 0.15 });
 
-    skillCards.forEach(card => {
+    revealCards.forEach(card => {
         card.classList.add('reveal');
         revealObserver.observe(card);
     });
 }
+
+// Project filters
+const filterButtons = document.querySelectorAll('.filter-btn');
+const projectCards = document.querySelectorAll('.project-card');
+const projectsEmpty = document.getElementById('projects-empty');
+
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const filter = button.dataset.filter;
+        let visible = 0;
+
+        filterButtons.forEach(btn => {
+            const isActive = btn === button;
+            btn.classList.toggle('active', isActive);
+            btn.setAttribute('aria-pressed', String(isActive));
+        });
+
+        projectCards.forEach(card => {
+            const show = filter === 'all' || card.dataset.status === filter;
+            card.hidden = !show;
+            if (show) visible++;
+        });
+
+        projectsEmpty.hidden = visible > 0;
+    });
+});

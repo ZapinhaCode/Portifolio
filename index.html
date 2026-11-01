@@ -20,7 +20,7 @@
 
         <nav id="navbar">
             <a href="#home" class="active">Home</a>
-            <a href="#services">Services</a>
+            <a href="#projects">Projects</a>
             <a href="#skills">Skills</a>
             <a href="#education">Education</a>
             <a href="#experience">Experience</a>
@@ -49,17 +49,96 @@
                     <a href="https://github.com/ZapinhaCode" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
                     <a href="https://www.instagram.com/bezappa/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
                     <a href="mailto:bernardozaparoli0@gmail.com" aria-label="Send email"><i class="fa-solid fa-envelope"></i></a>
-                    <a href="https://wa.me/5554997014744" aria-label="Send WhatsApp message"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://wa.me/5554997014744" target="_blank" rel="noopener noreferrer" aria-label="Send WhatsApp message"><i class="fa-brands fa-whatsapp"></i></a>
                 </div>
 
                 <a href="Bernardo_Zaparoli_CV.pdf" class="btn" download="Bernardo_Zaparoli_CV.pdf">My CV</a>
             </div>
         </section>
 
-        <section class="services" id="services">
-            <h2 class="section-title">My <span>Services</span></h2>
+        <section class="projects" id="projects">
+            <h2 class="section-title">My <span>Projects</span></h2>
 
-            <a href="mailto:bernardozaparoli0@gmail.com" class="btn">Let's talk</a>
+            <div class="project-filters" role="group" aria-label="Filter projects">
+                <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+                <button class="filter-btn" data-filter="live" aria-pressed="false">Online</button>
+                <button class="filter-btn" data-filter="repo" aria-pressed="false">Repository</button>
+            </div>
+
+            <div class="projects-grid">
+
+                <article class="project-card" data-status="repo">
+                    <div class="project-thumb">
+                        <i class="fa-solid fa-wallet" aria-hidden="true"></i>
+                        <!-- <img src="projects/despesas.png" alt="Expense Tracker screenshot"> -->
+                    </div>
+                    <div class="project-body">
+                        <span class="project-status">Repository</span>
+                        <h3>Expense Tracker</h3>
+                        <p>Monthly expense control with a dashboard of totals (paid, pending and overdue), categories
+                            with custom colors and icons, automatic overdue status and a month-by-month history with
+                            filters and comparison.</p>
+                        <ul class="tags">
+                            <li>Laravel</li>
+                            <li>Livewire</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="https://github.com/ZapinhaCode/NOME-DO-REPOSITORIO" target="_blank" rel="noopener noreferrer" class="experience-link">
+                                <i class="fa-brands fa-github" aria-hidden="true"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-status="repo">
+                    <div class="project-thumb">
+                        <i class="fa-solid fa-dice-d20" aria-hidden="true"></i>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-status">Repository</span>
+                        <h3>D&amp;D Character Sheets</h3>
+                        <p>A D&amp;D Beyond inspired app to build 5th Edition characters, with races, classes and
+                            spells, automatic racial bonuses, spell lists filtered by class and calculated modifiers,
+                            proficiency bonus, HP and initiative.</p>
+                        <ul class="tags">
+                            <li>Laravel</li>
+                            <li>Livewire</li>
+                            <li>Eloquent</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="https://github.com/ZapinhaCode/NOME-DO-REPOSITORIO" target="_blank" rel="noopener noreferrer" class="experience-link">
+                                <i class="fa-brands fa-github" aria-hidden="true"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- MODELO DE PROJETO NO AR (copie e cole quando tiver um)
+                <article class="project-card" data-status="live">
+                    <div class="project-thumb">
+                        <i class="fa-solid fa-rocket" aria-hidden="true"></i>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-status live">Online</span>
+                        <h3>Nome do projeto</h3>
+                        <p>Descrição curta do que o projeto faz.</p>
+                        <ul class="tags">
+                            <li>Tecnologia</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="https://seu-projeto.com" target="_blank" rel="noopener noreferrer" class="experience-link">
+                                <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live demo
+                            </a>
+                            <a href="https://github.com/ZapinhaCode/REPOSITORIO" target="_blank" rel="noopener noreferrer" class="experience-link">
+                                <i class="fa-brands fa-github" aria-hidden="true"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                -->
+            </div>
+
+            <p class="projects-empty" id="projects-empty" hidden>No projects in this category yet.</p>
         </section>
 
         <section class="skills" id="skills">
@@ -173,7 +252,7 @@
 
             <div class="education-tabs" role="tablist" aria-label="Education">
                 <button class="tab-btn active" role="tab" id="tab-degree" aria-selected="true" aria-controls="panel-degree" data-tab="degree">
-                    <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Formation
+                    <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Degree
                 </button>
                 <button class="tab-btn" role="tab" id="tab-certs" aria-selected="false" aria-controls="panel-certs" data-tab="certs" tabindex="-1">
                     <i class="fa-solid fa-certificate" aria-hidden="true"></i> Certificates
@@ -186,7 +265,7 @@
                     <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
                     <div class="education-info">
                         <h3>Bachelor's Degree in Computer Science</h3>
-                        <p class="education-school">Universidade de Passo Fundo (RS)</p>
+                        <p class="education-school">University of Passo Fundo (RS)</p>
                         <a href="https://drive.google.com/file/d/1YwCIV4mHGHrzsvFgJTDqr2_16CoXBPbd/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="experience-link">
                             View certificate <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                         </a>
@@ -200,14 +279,16 @@
                     <i class="fa-solid fa-certificate" aria-hidden="true"></i>
                     <div class="education-info">
                         <h3>PHP Velho Oeste</h3>
-                        <p class="education-school">Evento voltado para desenvolvedores PHP</p>
+                        <p class="education-school">Event for PHP developers</p>
                         <p class="education-meta">2025 - 2026</p>
-                        <a href="https://drive.google.com/file/d/1bQmnOje8ZsVsxTM0yJZf0BcRpcmWVcGS/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="experience-link">
-                            View certificate 2025 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                        </a>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="https://drive.google.com/file/d/13eHa6yzgqqW8zAOfRHeeKe18nM9b_3zq/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="experience-link">
-                            View certificate 2026 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                        </a>
+                        <div class="certificate-links">
+                            <a href="https://drive.google.com/file/d/1bQmnOje8ZsVsxTM0yJZf0BcRpcmWVcGS/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="experience-link">
+                                View certificate 2025 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                            </a>
+                            <a href="https://drive.google.com/file/d/13eHa6yzgqqW8zAOfRHeeKe18nM9b_3zq/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="experience-link">
+                                View certificate 2026 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                            </a>
+                        </div>
                     </div>
                 </article>
 
@@ -216,7 +297,7 @@
                     <div class="education-info">
                         <h3>Docker para desenvolvedores (Docker Swarm e Kubernetes)</h3>
                         <p class="education-school">Udemy</p>
-                        <p class="education-meta">2025 . 12.5 horas</p>
+                        <p class="education-meta">2025 · 12.5 hours</p>
                         <a href="https://drive.google.com/file/d/1gh5VTjG3oQVZtfW3uGSdrbBRXhKdlNDz/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="experience-link">
                             View certificate <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                         </a>
@@ -227,7 +308,7 @@
                     <i class="fa-solid fa-certificate" aria-hidden="true"></i>
                     <div class="education-info">
                         <h3>Academic Weeks</h3>
-                        <p class="education-school">Universidade de Passo Fundo</p>
+                        <p class="education-school">University of Passo Fundo</p>
                         <p class="education-meta">2022 - 2025</p>
                     </div>
                 </article>
