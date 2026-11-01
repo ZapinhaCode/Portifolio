@@ -141,3 +141,21 @@ tabButtons.forEach((button, index) => {
         activateTab(next);
     });
 });
+
+// Reveal skill cards on scroll
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const skillCards = document.querySelectorAll('.skill-card');
+
+    const revealObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
+        });
+    }, { threshold: 0.15 });
+
+    skillCards.forEach(card => {
+        card.classList.add('reveal');
+        revealObserver.observe(card);
+    });
+}
