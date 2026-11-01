@@ -144,7 +144,7 @@ tabButtons.forEach((button, index) => {
 
 // Reveal skill and project cards on scroll
 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const revealCards = document.querySelectorAll('.skill-card, .project-card');
+    const revealCards = document.querySelectorAll('.skill-card, .project-card, .contact-card');
     const revealObserver = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
             if (!entry.isIntersecting) return;
@@ -184,3 +184,7 @@ filterButtons.forEach(button => {
         projectsEmpty.hidden = visible > 0;
     });
 });
+
+// Footer year
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
