@@ -69,12 +69,55 @@
         <section class="education" id="education">
             <h2 class="section-title">My <span>Education</span></h2>
 
-            <div class="education-list">
+            <div class="education-tabs" role="tablist" aria-label="Education">
+                <button class="tab-btn active" role="tab" id="tab-degree" aria-selected="true" aria-controls="panel-degree" data-tab="degree">
+                    <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Formação
+                </button>
+                <button class="tab-btn" role="tab" id="tab-certs" aria-selected="false" aria-controls="panel-certs" data-tab="certs" tabindex="-1">
+                    <i class="fa-solid fa-certificate" aria-hidden="true"></i> Certificados
+                </button>
+            </div>
+
+            <!-- ABA: FORMAÇÃO -->
+            <div class="education-list tab-panel" id="panel-degree" role="tabpanel" aria-labelledby="tab-degree">
                 <article class="education-card">
                     <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
                     <div class="education-info">
                         <h3>Bachelor's Degree in Computer Science</h3>
-                        <p class="education-school">University of Passo Fundo (RS)</p>
+                        <p class="education-school">Universidade de Passo Fundo (RS)</p>
+                        <a href="https://drive.google.com/file/d/1YwCIV4mHGHrzsvFgJTDqr2_16CoXBPbd/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="experience-link">
+                            View certificate <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- ABA: CERTIFICADOS -->
+            <div class="education-list tab-panel" id="panel-certs" role="tabpanel" aria-labelledby="tab-certs" hidden>
+                <article class="education-card">
+                    <i class="fa-solid fa-certificate" aria-hidden="true"></i>
+                    <div class="education-info">
+                        <h3>PHP Velho Oeste</h3>
+                        <p class="education-school">Evento voltado para desenvolvedores PHP</p>
+                        <p class="education-meta">2025 - 2026</p>
+                        <a href="https://drive.google.com/file/d/1bQmnOje8ZsVsxTM0yJZf0BcRpcmWVcGS/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="experience-link">
+                            View certificate 2025 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                        </a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="https://drive.google.com/file/d/13eHa6yzgqqW8zAOfRHeeKe18nM9b_3zq/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="experience-link">
+                            View certificate 2026 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="education-card">
+                    <i class="fa-solid fa-certificate" aria-hidden="true"></i>
+                    <div class="education-info">
+                        <h3>Docker para desenvolvedores (Docker Swarm e Kubernetes)</h3>
+                        <p class="education-school">Udemy</p>
+                        <p class="education-meta">2025 . 12.5 horas</p>
+                        <a href="https://drive.google.com/file/d/1gh5VTjG3oQVZtfW3uGSdrbBRXhKdlNDz/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="experience-link">
+                            View certificate <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                        </a>
                     </div>
                 </article>
             </div>

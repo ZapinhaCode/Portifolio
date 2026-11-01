@@ -111,3 +111,33 @@ document.querySelectorAll('[data-role]').forEach(el => {
     const start = range && parseDate(range.start);
     if (start) el.textContent = formatDuration(start, parseDate(range.end));
 });
+
+// Education tabs
+const tabButtons = document.querySelectorAll('.tab-btn');
+const tabPanels = document.querySelectorAll('.tab-panel');
+
+function activateTab(button) {
+    tabButtons.forEach(btn => {
+        const isActive = btn === button;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-selected', String(isActive));
+        btn.tabIndex = isActive ? 0 : -1;
+    });
+
+    tabPanels.forEach(panel => {
+        panel.hidden = panel.id !== button.getAttribute('aria-controls');
+    });
+}
+
+tabButtons.forEach((button, index) => {
+    button.addEventListener('click', () => activateTab(button));
+
+    // Navegação por teclado (setas esquerda/direita)
+    button.addEventListener('keydown', e => {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+        const step = e.key === 'ArrowRight' ? 1 : -1;
+        const next = tabButtons[(index + step + tabButtons.length) % tabButtons.length];
+        next.focus();
+        activateTab(next);
+    });
+});
