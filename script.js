@@ -7,10 +7,24 @@ function setMenu(open) {
     menuToggle.setAttribute('aria-expanded', String(open));
     menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     menuToggle.querySelector('i').className = open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+    document.body.style.overflow = open ? 'hidden' : 'auto';
 }
 
 menuToggle.addEventListener('click', () => setMenu(!navbar.classList.contains('open')));
-navbar.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false)));
+navbar.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        if (!link.classList.contains('nav-cv-btn')) {
+            setMenu(false);
+        }
+    });
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('header')) {
+        setMenu(false);
+    }
+});
 
 // Typing effect
 const typingEl = document.getElementById('typing');
